@@ -16,7 +16,8 @@ print(firstIndex(arr, x, 0))
 
 
 
-# Copying list way
+# Copying snaller list way
+
 # def firstIndex(a, x):
 #     l = len(a)
 #     if l == 0:
