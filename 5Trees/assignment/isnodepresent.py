@@ -5,18 +5,14 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
-def countNodesGreaterThanX(root, x):
+def isNodePresent(root, x):
     if root == None:
-        return 0
+        return False
     
-    leftCount = countNodesGreaterThanX(root.left, x)
-    rightCount = countNodesGreaterThanX(root.right, x)
+    if root.data == x:
+        return True
     
-    if root.data > x:
-        return 1 + leftCount + rightCount
-    else:
-        return leftCount + rightCount
-    
+    return isNodePresent(root.left, x) or isNodePresent(root.right, x)
 
 def buildLevelTree(levelorder):
     index = 0
@@ -45,6 +41,10 @@ def buildLevelTree(levelorder):
 
 # Main
 levelOrder = [int(i) for i in input().strip().split()]
-x=int(input())
 root = buildLevelTree(levelOrder)
-print(countNodesGreaterThanX(root, x))
+x=int(input())
+present=isNodePresent(root, x)
+if present:
+    print('true')
+else:
+    print('false')

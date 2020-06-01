@@ -5,18 +5,16 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
-def countNodesGreaterThanX(root, x):
+def mirrorBinaryTree(root):
+    # Mirror the given binary tree. That is, right child of every nodes should
+    # become left and left should become right.
     if root == None:
-        return 0
+        return
     
-    leftCount = countNodesGreaterThanX(root.left, x)
-    rightCount = countNodesGreaterThanX(root.right, x)
+    mirrorBinaryTree(root.left)
+    mirrorBinaryTree(root.right)
     
-    if root.data > x:
-        return 1 + leftCount + rightCount
-    else:
-        return leftCount + rightCount
-    
+    root.left, root.right = root.right, root.left
 
 def buildLevelTree(levelorder):
     index = 0
@@ -43,8 +41,28 @@ def buildLevelTree(levelorder):
             q.put(rightNode)
     return root
 
+# Problem ID 353, Level order traversal
+def printLevelATNewLine(root):
+    # Given a binary tree, print the level order traversal. Make sure each level
+    # start in new line.
+    if root==None:
+        return
+    inputQ = queue.Queue()
+    outputQ = queue.Queue()
+    inputQ.put(root)
+    while not inputQ.empty():
+        while not inputQ.empty():
+            curr = inputQ.get()
+            print(curr.data, end=' ')
+            if curr.left!=None:
+                outputQ.put(curr.left)
+            if curr.right!=None:
+                outputQ.put(curr.right)
+        print()
+        inputQ, outputQ = outputQ, inputQ
+
 # Main
 levelOrder = [int(i) for i in input().strip().split()]
-x=int(input())
 root = buildLevelTree(levelOrder)
-print(countNodesGreaterThanX(root, x))
+mirrorBinaryTree(root)
+printLevelATNewLine(root)

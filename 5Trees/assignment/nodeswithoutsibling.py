@@ -5,18 +5,20 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
-def countNodesGreaterThanX(root, x):
+def nodesWithoutSibling(root):
     if root == None:
-        return 0
+        return False
     
-    leftCount = countNodesGreaterThanX(root.left, x)
-    rightCount = countNodesGreaterThanX(root.right, x)
+    left_sib = nodesWithoutSibling(root.left)
+    right_sib = nodesWithoutSibling(root.right)
     
-    if root.data > x:
-        return 1 + leftCount + rightCount
-    else:
-        return leftCount + rightCount
+    if (left_sib is False) and (right_sib is not False):
+        print(root.right.data)
     
+    if (right_sib is False) and (left_sib is not False):
+        print(root.left.data)
+
+    return True
 
 def buildLevelTree(levelorder):
     index = 0
@@ -45,6 +47,5 @@ def buildLevelTree(levelorder):
 
 # Main
 levelOrder = [int(i) for i in input().strip().split()]
-x=int(input())
 root = buildLevelTree(levelOrder)
-print(countNodesGreaterThanX(root, x))
+nodesWithoutSibling(root)
