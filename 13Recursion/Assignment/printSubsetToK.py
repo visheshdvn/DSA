@@ -2,20 +2,23 @@ import sys
 sys.setrecursionlimit(10 ** 8)
 
 
-def subsetsSumK(arr, k):
+def subsetsSumK(arr, k, values):
     if len(arr) == 0:
-        return []
+        for i in values:
+            for j in i:
+                print(j, end=" ")
+            print()
+        return
     
     a = arr[0]
-    lst = subsetsSumK(arr[1:], k)
     
     if k-a in arr[1:]:
-        lst.append([a, k-a])
-    
-    if a == k:
-        lst.append([a])
+        values.append([a, k-a])
         
-    return lst
+    if a == k:
+        values.append([a])
+        
+    subsetsSumK(arr[1:], k, values)
     
 #taking input
 def takeInput() :
@@ -27,19 +30,9 @@ def takeInput() :
     arr = [int(element) for element in list(input().strip().split(" "))]
     return arr, n
 
-
-#printing the list of lists
-def printListOfList(liOfLi) :
-    for li in liOfLi :
-        for elem in li :
-            print(elem, end = " ")
-        print()
-
 #main
 arr, n = takeInput()
 
 if n != 0 :
     k = int(input().strip())
-    liOfLi = subsetsSumK(arr, k)
-
-    printListOfList(liOfLi)
+    subsetsSumK(arr, k, [])
