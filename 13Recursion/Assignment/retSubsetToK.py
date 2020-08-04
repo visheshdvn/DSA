@@ -13,7 +13,10 @@ def subsetsSumK(arr, k):
         lst.append([a, k-a])
     
     if a == k:
-        lst.append([a])
+        if 0 in arr[1:]:
+            lst.append([a, 0])
+        else:
+            lst.append([a])
         
     return lst
     
