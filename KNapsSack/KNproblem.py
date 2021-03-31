@@ -33,7 +33,6 @@ def knapsackBF(weights, values, maxWeight, n, i):
         
         ans = max(ans1, ans2)
         
-    
     return ans
 
 
