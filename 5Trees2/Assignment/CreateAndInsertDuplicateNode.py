@@ -33,10 +33,10 @@ def insertDuplicateNode(root):
     insertDuplicateNode(root.left)
     
     node = BinaryTreeNode(root.data)
-    node.right = root.right
     node.left = root.left
     root.left = node
     
+    insertDuplicateNode(root.right)
     return
     
 
