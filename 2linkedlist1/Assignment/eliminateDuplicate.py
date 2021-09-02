@@ -1,21 +1,3 @@
-# You have been given a singly linked list of integers where the elements are sorted in ascending order. Write a function that removes the consecutive duplicate values such that the given list only contains unique elements and returns the head to the updated list.
-
-#  Input format :
-# The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
-
-# The first and the only line of each test case or query contains the elements(in ascending order) of the singly linked list separated by a single space.
-
-#  Output format :
-# For each test case/query, print the resulting singly linked list of integers in a row, separated by a single space.
-
-# Output for every test case will be printed in a seperate line.
-
-# Sample Input 1 :
-# 1
-# 1 2 3 3 4 3 4 5 4 5 5 7 -1
-# Sample Output 1 :
-# 1 2 3 4 3 4 5 4 5 7 
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -28,10 +10,9 @@ def eliminate_duplicate(head):
 
     while node != None:
         if prev.data != node.data:
-            prev.next = node
             prev = prev.next
-
-        if prev.data == node.data:
+            node = node.next
+        else:
             prev.next = node.next
             node = node.next
 
