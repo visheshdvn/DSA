@@ -17,30 +17,33 @@
 # 5 7 1
 
 import queue
+
+
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
+
 def rootToLeafPathsSumToK(root, k, lst):
-    if sum(lst) > k or root == None:
-        return 0
-    
-    lst2 = lst[:]
-    lst2.append(root.data)
-    
-    lch = rootToLeafPathsSumToK(root.left, k, lst2)
-    rch = rootToLeafPathsSumToK(root.right, k, lst2)
-    
-    if lch == rch == 0 and sum(lst2) == k:
-        print(*lst2)
+    if (root.left is None and root.right is None) and sum(lst) + root.data == k:
+        for i in lst:
+            print(i, end=" ")
+        print(root.data)
+        return
+
+    if root.left is not None:
+        rootToLeafPathsSumToK(root.left, k, [*lst, root.data])
+
+    if root.right is not None:
+        rootToLeafPathsSumToK(root.right, k, [*lst, root.data])
 
 
 def buildLevelTree(levelorder):
     index = 0
     length = len(levelorder)
-    if length<=0 or levelorder[0]==-1:
+    if length <= 0 or levelorder[0] == -1:
         return None
     root = BinaryTreeNode(levelorder[index])
     index += 1
@@ -52,18 +55,19 @@ def buildLevelTree(levelorder):
         index += 1
         if leftChild != -1:
             leftNode = BinaryTreeNode(leftChild)
-            currentNode.left =leftNode
+            currentNode.left = leftNode
             q.put(leftNode)
         rightChild = levelorder[index]
         index += 1
         if rightChild != -1:
             rightNode = BinaryTreeNode(rightChild)
-            currentNode.right =rightNode
+            currentNode.right = rightNode
             q.put(rightNode)
     return root
+
 
 # Main
 levelOrder = [int(i) for i in input().strip().split()]
 root = buildLevelTree(levelOrder)
-k=int(input())
+k = int(input())
 rootToLeafPathsSumToK(root, k, [])

@@ -10,32 +10,35 @@
 # Sample Input :
 # 5 6 10 2 3 -1 -1 -1 -1 -1 9 -1 -1
 # Sample Output :
-# 5 
-# 6 10 
-# 2 3 
+# 5
+# 6 10
+# 2 3
 # 9
 
 import queue
+
+
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
+
 def printLevelATNewLine(root):
-    if root==None:
+    if root == None:
         return
-    
     inputQ = queue.Queue()
     outputQ = queue.Queue()
     inputQ.put(root)
     while not inputQ.empty():
         while not inputQ.empty():
-            curr = inputQ.get()
-            print(curr.data, end=' ')
-            if curr.left!=None:
+            node = inputQ.get()
+            print(node.data, end=" ")
+
+            if curr.left != None:
                 outputQ.put(curr.left)
-            if curr.right!=None:
+            if curr.right != None:
                 outputQ.put(curr.right)
         print()
         inputQ, outputQ = outputQ, inputQ
@@ -44,7 +47,7 @@ def printLevelATNewLine(root):
 def buildLevelTree(levelorder):
     index = 0
     length = len(levelorder)
-    if length<=0 or levelorder[0]==-1:
+    if length <= 0 or levelorder[0] == -1:
         return None
     root = BinaryTreeNode(levelorder[index])
     index += 1
@@ -56,18 +59,19 @@ def buildLevelTree(levelorder):
         index += 1
         if leftChild != -1:
             leftNode = BinaryTreeNode(leftChild)
-            currentNode.left =leftNode
+            currentNode.left = leftNode
             q.put(leftNode)
         rightChild = levelorder[index]
         index += 1
         if rightChild != -1:
             rightNode = BinaryTreeNode(rightChild)
-            currentNode.right =rightNode
+            currentNode.right = rightNode
             q.put(rightNode)
     return root
 
+
 # Main
-#n=int(input())
+# n=int(input())
 levelOrder = [int(i) for i in input().strip().split()]
 root = buildLevelTree(levelOrder)
 printLevelATNewLine(root)
