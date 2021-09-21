@@ -28,7 +28,7 @@ class StackUsingLL:
         node = None
         self.__size -= 1
         return var
-    
+
     # Return 0 if stack is empty. Don't display any other message
     def top(self):
         if self.__size > 0:

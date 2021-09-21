@@ -13,29 +13,32 @@
 # 3
 
 import queue
+
+
 class BinaryTreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
+
 def countNodesGreaterThanX(root, x):
     if root == None:
         return 0
-    
-    leftCount = countNodesGreaterThanX(root.left, x)
-    rightCount = countNodesGreaterThanX(root.right, x)
-    
+
+    nleft = countNodesGreaterThanX(root.left, x)
+    nright = countNodesGreaterThanX(root.right, x)
+
     if root.data > x:
-        return 1 + leftCount + rightCount
+        return 1+nleft+nright
     else:
-        return leftCount + rightCount
-    
+        return nleft+nright
+
 
 def buildLevelTree(levelorder):
     index = 0
     length = len(levelorder)
-    if length<=0 or levelorder[0]==-1:
+    if length <= 0 or levelorder[0] == -1:
         return None
     root = BinaryTreeNode(levelorder[index])
     index += 1
@@ -47,18 +50,19 @@ def buildLevelTree(levelorder):
         index += 1
         if leftChild != -1:
             leftNode = BinaryTreeNode(leftChild)
-            currentNode.left =leftNode
+            currentNode.left = leftNode
             q.put(leftNode)
         rightChild = levelorder[index]
         index += 1
         if rightChild != -1:
             rightNode = BinaryTreeNode(rightChild)
-            currentNode.right =rightNode
+            currentNode.right = rightNode
             q.put(rightNode)
     return root
 
+
 # Main
 levelOrder = [int(i) for i in input().strip().split()]
-x=int(input())
+x = int(input())
 root = buildLevelTree(levelOrder)
 print(countNodesGreaterThanX(root, x))
