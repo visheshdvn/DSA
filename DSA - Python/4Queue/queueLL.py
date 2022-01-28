@@ -5,7 +5,7 @@ class Node:
         self.next = None
         
 class QueueUsingLL:
-  
+
 ### Implement These Functions Here    
     def __init__(self):
         self.__head = None

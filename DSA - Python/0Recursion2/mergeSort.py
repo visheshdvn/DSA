@@ -1,15 +1,22 @@
+# Complexity -
+# Best Case Time Complexity: O(n*log n)
+# Worst Case Time Complexity: O(n*log n)
+# Average Time Complexity: O(n*log n)
+
+# CODE -
+
 def merge(arr, l, mid, r):
-    n1 = mid-l+1
-    n2 = r-mid
+    n1 = mid-l+1  # Number of elements in left subarray
+    n2 = r-mid    # Number of elements in right subarray
 
-    lArr = arr[l:mid+1]
-    rArr = arr[mid+1:r+1]
+    lArr = arr[l:mid+1]  # Left subarray
+    rArr = arr[mid+1:r+1]  # Right subarray
 
-    i = 0
-    j = 0
-    k = l
-    
-    while i < n1 and j < n2:
+    i = 0  # Index for left subarray
+    j = 0  # Index for right subarray
+    k = l  # Index for merged subarray
+
+    while i < n1 and j < n2:  # While both subarrays are not empty
         if lArr[i] < rArr[j]:
             arr[k] = lArr[i]
             i += 1
@@ -18,23 +25,23 @@ def merge(arr, l, mid, r):
             j += 1
         else:
             arr[k] = lArr[i]
-            i+=1
-            k+=1
+            i += 1
+            k += 1
             arr[k] = rArr[j]
-            j+=1
-            k+=1
+            j += 1
+            k += 1
             continue
         k += 1
 
     while i < n1:
         arr[k] = lArr[i]
         i += 1
-        k+=1
+        k += 1
 
     while j < n2:
         arr[k] = rArr[j]
         j += 1
-        k+=1
+        k += 1
 
 
 def mergeSort(arr, l, r):

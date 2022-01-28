@@ -1,3 +1,8 @@
+# Complexity -
+# Best Case Time Complexity: O(n*log n)
+# Average Time Complexity: O(n*log n)
+# Worst Case Time Complexity: O(n^2)
+
 def partition(array, li, ei):
     pivot = array[li]
     l = li + 1
@@ -19,15 +24,17 @@ def partition(array, li, ei):
 
     return h
 
+
 def quickSort(array, li, ei):
     if li >= ei:
         return
-    
+
     p = partition(array, li, ei)
     quickSort(array, li, p-1)
     quickSort(array, p+1, ei)
-    
-n=int(input())
-arr=list(int(i) for i in input().strip().split(' '))
+
+
+n = int(input())
+arr = list(int(i) for i in input().strip().split(' '))
 quickSort(arr, 0, n-1)
 print(*arr)
