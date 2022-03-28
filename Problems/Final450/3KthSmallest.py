@@ -1,8 +1,8 @@
-def kthSmallest(arr, k):
+def kthSmallestAndLargest(arr, k):
     arr.sort()
-    return arr[k-1]
+    return arr[k-1], arr[len(arr) - k]
 
 
 arr = [int(i) for i in input().strip().split()]
 k = int(input())
-print(kthSmallest(arr, k))
+print(kthSmallestAndLargest(arr, k))
