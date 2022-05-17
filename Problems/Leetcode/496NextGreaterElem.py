@@ -1,7 +1,3 @@
-import enum
-from math import gamma
-
-
 class Solution:
     def nextGreaterElement(self, nums1, nums2):
         stack = []
@@ -17,6 +13,7 @@ class Solution:
                 stack.append(nums2[i])
 
         return ret_list
+
 
 nums1 = [int(i) for i in input().split()]
 nums2 = [int(i) for i in input().split()]
