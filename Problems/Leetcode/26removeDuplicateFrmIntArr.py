@@ -1,14 +1,31 @@
 class Solution:
-    def removeDuplicates(self, nums):
-        ind = 0
+    def removeDuplicates(self, nums) -> int:
+        if len(nums) == 1:
+            return 1
 
-        for i in range(1, len(nums)):
-            if nums[ind] != nums[i]:
-                ind += 1
-                continue
+        curr = 1
+        n = 1
+
+        while n < len(nums):
+            if curr == n and nums[curr] != nums[curr-1]:
+                nums[curr] = nums[n]
+                curr += 1
+                n += 1
+            elif (curr == n and nums[curr] == nums[curr-1]) or (curr != n and nums[curr] == nums[n]):
+                n += 1
+            elif curr != n and nums[curr] != nums[n]:
+                if not nums[n] == nums[curr-1]:
+                    nums[curr] = nums[n]
+                    curr += 1
+                n += 1
+
+        return curr
 
 
 x = [int(i) for i in input().strip().split()]
 ob = Solution()
-ob.removeDuplicates(x)
-print(x)
+n = ob.removeDuplicates(x)
+print(n)
+# print(list(set(x)))
+# print(n == len(list(set(x))))
+print(x[:n])
