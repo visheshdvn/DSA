@@ -1,40 +1,17 @@
-def addStr(num1, num2):
-    n1 = len(num1)
-    n2 = len(num2)
-
-    num1 = num1[::-1]
-    num2 = num2[::-1]
-
-    i, j = 0, 0
-    carry = 0
-    ans = ""
-
-    while i < n1 and j < n2:
-        s = int(num1[i]) + int(num2[j]) + carry
-        ans += str(s % 10)
-        carry = s // 10
-        i += 1
-        j += 1
-
-    while i < n1:
-        s = int(num1[i]) + carry
-        ans += str(s % 10)
-        carry = s//10
-        i += 1
-
-    while j < n2:
-        s = int(num2[j]) + carry
-        ans += str(s % 10)
-        carry = s//10
-        j += 1
-
-    if carry > 0:
-        ans += str(carry)
-
-    return ans[::-1]
+def tempFunc(mat, k):
+    # Approach 1
+    temp = []
+    for i, m in enumerate(mat):
+        # since it has only 1 and 0, the total sum will be total 1s.
+        sol = (sum(m), i)
+        temp.append(sol)
+    print("temp before", temp)
+    temp.sort()
+    print("temp after", temp)
+    return 0
 
 
-num1 = input()
-num2 = input()
-
-print(addStr(num1, num2))
+rows = int(input())
+mat = [[int(j) for j in input().split()] for _ in range(rows)]
+k = int(input())
+print(tempFunc(mat, k))
