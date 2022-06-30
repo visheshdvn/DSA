@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class CheckRecursiveString {
+public class IsPalindrome {
 
     public static boolean isPalindrome(String str, int start, int end) {
         if (start >= end) {

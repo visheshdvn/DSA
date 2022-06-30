@@ -52,7 +52,6 @@ def mergeSort(arr, l, r):
         mergeSort(arr, m+1, r)
         merge(arr, l, m, r)
 
-
         # Main
 n = int(input())
 arr = list(int(i) for i in input().strip().split(' '))
