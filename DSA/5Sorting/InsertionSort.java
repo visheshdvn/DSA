@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class InsertionSort {
 
-    public static void bubbleSort(int[] arr) {
+    public static void insertionSort(int[] arr) {
         if (arr.length <= 1) {
             return;
         }
@@ -39,7 +39,7 @@ public class InsertionSort {
 
         scan.close();
 
-        bubbleSort(arr);
+        insertionSort(arr);
         printArray(arr);
     }
 }
