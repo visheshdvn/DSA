@@ -1,20 +1,22 @@
 import java.util.Scanner;
 
-public class BubbleSort {
-    public static void bubbleSort(int[] arr) {
-        int k = arr.length - 1;
+public class InsertionSort {
 
-        while (k > 0) {
-            int j = 0;
-            while (j < k) {
-                if (arr[j] > arr[j + 1]) {
-                    int t = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = t;
-                }
-                j += 1;
+    public static void bubbleSort(int[] arr) {
+        if (arr.length <= 1) {
+            return;
+        }
+
+        for (int i = 1; i < arr.length; i++) {
+            int num = arr[i];
+            int j = i - 1;
+
+            while ((j >= 0) && arr[j] > num) {
+                arr[j + 1] = arr[j];
+                j -= 1;
             }
-            k -= 1;
+
+            arr[j + 1] = num;
         }
     }
 
@@ -26,17 +28,17 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
         System.out.print("Enter size of array: ");
         int n = scan.nextInt();
         int arr[] = new int[n];
 
-        System.out.print("Enter elements of array: ");
+        System.out.print("Enter elements in array: ");
         for (int i = 0; i < n; i++) {
             arr[i] = scan.nextInt();
         }
 
         scan.close();
+
         bubbleSort(arr);
         printArray(arr);
     }

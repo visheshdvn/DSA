@@ -1,20 +1,21 @@
 import java.util.Scanner;
 
-public class BubbleSort {
-    public static void bubbleSort(int[] arr) {
-        int k = arr.length - 1;
+public class SelectionSort {
+    public static void selectionSort(int[] arr) {
+        int curr = 0;
 
-        while (k > 0) {
-            int j = 0;
-            while (j < k) {
-                if (arr[j] > arr[j + 1]) {
-                    int t = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = t;
-                }
-                j += 1;
+        while (curr < arr.length) {
+            int min_ind = curr;
+            for (int i = min_ind + 1; i < arr.length; i++) {
+                if (arr[i] < arr[min_ind]) min_ind = i;
             }
-            k -= 1;
+
+            if (min_ind != curr) {
+                int t = arr[curr];
+                arr[curr] = arr[min_ind];
+                arr[min_ind] = t;
+            }
+            curr += 1;
         }
     }
 
@@ -37,7 +38,7 @@ public class BubbleSort {
         }
 
         scan.close();
-        bubbleSort(arr);
+        selectionSort(arr);
         printArray(arr);
     }
 }
