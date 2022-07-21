@@ -11,18 +11,20 @@
 #  2 5 8 12 -1
 #  3 6 9 -1
 # Sample Output :
-#  2 3 5 6 8 9 12 
+#  2 3 5 6 8 9 12
 
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
+
 def createNodeandReturn(a):
     node = Node(a)
     return node
 
-def merge(head1,head2):
+
+def merge(head1, head2):
     newHead = Node(0)
     retHead = newHead
 
@@ -54,8 +56,9 @@ def merge(head1,head2):
 
     return retHead.next
 
+
 def ll(arr):
-    if len(arr)==0:
+    if len(arr) == 0:
         return None
     head = Node(arr[0])
     last = head
@@ -64,16 +67,18 @@ def ll(arr):
         last = last.next
     return head
 
+
 def printll(head):
     while head:
         print(head.data, end=' ')
         head = head.next
     print()
 
+
 # Main
 # Read the link list elements including -1
-arr1=list(int(i) for i in input().strip().split(' '))
-arr2=list(int(i) for i in input().strip().split(' '))
+arr1 = list(int(i) for i in input().strip().split(' '))
+arr2 = list(int(i) for i in input().strip().split(' '))
 # Create a Linked list after removing -1 from list
 l1 = ll(arr1[:-1])
 l2 = ll(arr2[:-1])
