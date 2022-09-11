@@ -44,11 +44,8 @@ def height(root):
 
     l = height(root.left)
     r = height(root.right)
-
-    if l > r:
-        return 1+l
-    elif r >= l:
-        return 1+r
+    
+    return max(l, r) + 1
 
 
 def buildLevelTree():
