@@ -1,23 +1,28 @@
 package tmp;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Test {
+    static int reverse(int n) {
+        int ans = 0, bits = 0;
+
+        while (bits < 32) {
+            ans <<= 1;
+            if ((bits & 1) == 1) {
+                ans += 1;
+            }
+            n >>= 1;
+            bits += 1;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
-        List<List<Integer>> l = new ArrayList<>();
+        Scanner scan = new Scanner(System.in);
 
-        List<Integer> abc = new ArrayList<>();
+        int n = scan.nextInt();
+        scan.close();
 
-        abc.add(1);
-        abc.add(2);
-        abc.add(3);
-        abc.add(4);
-        abc.add(5);
-
-        l.add(abc);
-
-        System.out.print(l.get(0).get(0));
-
+        System.out.println(reverse(n));
     }
 }
