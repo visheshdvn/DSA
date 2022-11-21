@@ -23,6 +23,6 @@ public class Test {
         int n = scan.nextInt();
         scan.close();
 
-        System.out.println(reverse(n));
+        // System.out.println(reverse(n));
     }
 }
