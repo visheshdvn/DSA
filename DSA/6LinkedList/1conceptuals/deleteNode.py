@@ -3,6 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
+
 def delete(head, i, n):
     if i < 0 or i >= n:
         return head
@@ -18,7 +19,7 @@ def delete(head, i, n):
         prev = current
         current = current.next
         i -= 1
-    
+
     if current.next == None:
         prev.next = None
     else:
@@ -27,8 +28,9 @@ def delete(head, i, n):
 
     return head
 
+
 def ll(arr):
-    if len(arr)==0:
+    if len(arr) == 0:
         return None
     head = Node(arr[0])
     last = head
@@ -37,18 +39,20 @@ def ll(arr):
         last = last.next
     return head
 
+
 def printll(head):
     while head:
         print(head.data, end=' ')
         head = head.next
     print()
 
+
 # Main
 # Read the link list elements including -1
-arr=list(int(i) for i in input().strip().split(' '))
+arr = list(int(i) for i in input().strip().split(' '))
 # Create a Linked list after removing -1 from list
 n = len(arr)
 l = ll(arr[:-1])
-i=int(input())
+i = int(input())
 l = delete(l, i, n-1)
 printll(l)
