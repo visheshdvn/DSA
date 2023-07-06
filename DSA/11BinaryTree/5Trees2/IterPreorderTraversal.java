@@ -12,7 +12,7 @@ class Node {
     }
 }
 
-public class IterInorderTraversal {
+public class IterPreorderTraversal {
     static Queue<Node> q = new ArrayDeque<>();
 
     static void insert(int data) {

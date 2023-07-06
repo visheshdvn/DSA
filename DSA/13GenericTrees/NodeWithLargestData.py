@@ -29,7 +29,7 @@ def maxDataNode(tree):
         max_child_data = maxDataNode(i)
     
         if max_child_data > max_data:
-           max_data = max_child_data 
+            max_data = max_child_data 
     
     return max(tree.data, max_data)
 

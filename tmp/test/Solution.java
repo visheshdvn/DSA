@@ -1,30 +1,36 @@
 package tmp.test;
 
-class Node {
-    int data;
-    Node next;
-
-    Node(int _data, Node _next) {
-        data = _data;
-        next = _next;
-    }
-}
+import java.util.Scanner;
 
 /**
  * Solution
  */
 public class Solution {
+    public static int countCustomers(int[] bill) {
+        int answer = 0;
+        // write your code here
+
+        for (int i = 0; i < bill.length; i++) {
+            double sqrt = Math.sqrt(bill[i]);
+
+            if ((sqrt - Math.floor(sqrt)) == 0) {
+                answer++;
+            }
+        }
+
+        return answer;
+    }
 
     public static void main(String[] args) {
-        //Node list_dummy[]=new Node[3];
-        Node head, node;
-        head = new Node(0, null);
-        node = head;
+        Scanner in = new Scanner(System.in);
+        // input for bill
+        int bill_size = in.nextInt();
+        int bill[] = new int[bill_size];
+        for (int idx = 0; idx < bill_size; idx++) {
+            bill[idx] = in.nextInt();
+        }
 
-        node.next = new Node(1, null);
-        node = node.next;
-
-        node.next = new Node(2, null);
-        node = node.next;
+        int result = countCustomers(bill);
+        System.out.println(result);
     }
 }
