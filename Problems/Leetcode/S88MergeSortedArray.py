@@ -1,26 +1,24 @@
 
-def merge(nums1, m, nums2, n):
-    i = -1
-    j = -1
-    k = 0
-    if m-1 >= 0:
-        k = m-1
-
-    while j >= -len(nums2):
-        if nums2[j] > nums1[k]:
-            nums1[i] = nums2[j]
-            i -= 1
-            j -= 1
-        elif nums1[k] > nums2[j]:
-            nums1[i] = nums1[k]
-            nums1[k] = 0
-            i -= 1
-            if k-1 >= 0:
-                k -= 1
+def merge(nums1, m: int, nums2, n: int):
+    nums1_index = m-1
+    nums2_index = n-1
+    index = m+n-1
+    
+    while(nums1_index>=0 and nums2_index>=0):
+        if(nums1[nums1_index]<nums2[nums2_index]):
+            nums1[index]=nums2[nums2_index]
+            nums2_index-=1
         else:
-            nums1[i] = nums2[j]
-            j -= 1
-            i -= 1
+            nums1[index]=nums1[nums1_index]
+            nums1_index-=1
+        index-=1
+    
+    while(nums2_index>=0):
+        nums1[index]=nums2[nums2_index]
+        nums2_index-=1
+        index-=1
+            
+    return nums1
 
 
 nums1 = [int(i) for i in input().split()]
