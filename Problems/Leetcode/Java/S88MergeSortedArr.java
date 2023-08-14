@@ -35,8 +35,9 @@ public class S88MergeSortedArr {
         }
     }
 
-    public static void printArr(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
+    public static void printArr(int[] arr, int startIndex, int n) {
+        // prints n numbers from startIndex
+        for (int i = startIndex; i < startIndex+n && i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
@@ -60,7 +61,7 @@ public class S88MergeSortedArr {
         
         scan.close();
         merge(arr1, n1, arr2, n - n1);
-        printArr(arr1);
+        printArr(arr1, 0, arr1.length);
         // printArr(arr2);
     }
 }
