@@ -1,21 +1,33 @@
 import java.util.Scanner;
 
-public class LC26RemoveDuplFromSortedArr {
-    public static int removeDuplicates(int[] nums) {
-        int last = -101, curr = 0, n = 0;
+/**
+ * LC977SqOfSortedArr
+ */
+public class LC977SqOfSortedArr {
+    public static int[] sortedSquares(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
 
-        while (n < nums.length) {
-            if (nums[n] != last) {
-                nums[curr] = nums[n];
-                last = nums[n];
-                curr++;
+        int front = n - 1, back = 0, index = n - 1;
+
+        while (back <= front) {
+            int l_sq = nums[back] * nums[back];
+            int r_sq = nums[front] * nums[front];
+
+            if (l_sq < r_sq) {
+                res[index] = r_sq;
+                front--;
+            } else if (l_sq >= r_sq) {
+                res[index] = l_sq;
+                back++;
             }
-            n++;
+
+            index--;
         }
-        return curr;
+
+        return res;
     }
 
-    // take element input
     public static void populateArr(int[] arr, int startIndex, int n) {
         // populates n numbers from startIndex
         Scanner scan = new Scanner(System.in);
@@ -42,7 +54,7 @@ public class LC26RemoveDuplFromSortedArr {
         populateArr(arr, 0, n); // populates array from [startIndex, startIndex+length) position
 
         scan.close();
-        int size = removeDuplicates(arr);
-        printArr(arr, 0, size);
+        int[] res = sortedSquares(arr);
+        printArr(res, 0, n);
     }
 }
