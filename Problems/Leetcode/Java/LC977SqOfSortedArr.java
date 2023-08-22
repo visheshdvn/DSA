@@ -17,7 +17,7 @@ public class LC977SqOfSortedArr {
             if (l_sq < r_sq) {
                 res[index] = r_sq;
                 front--;
-            } else if (l_sq >= r_sq) {
+            } else {
                 res[index] = l_sq;
                 back++;
             }
