@@ -1,4 +1,4 @@
-public class S929UniqueEmailAddr {
+public class LC929UniqueEmailAddr {
     public static int numUniqueEmails(String[] emails) {
 
     }

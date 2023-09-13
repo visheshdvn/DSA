@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * S49GroupAnagrams
  */
-public class S49GroupAnagrams {
+public class LC49GroupAnagrams {
 
     public static String getFrequencyString(String str) {
         int[] freq = new int[26];

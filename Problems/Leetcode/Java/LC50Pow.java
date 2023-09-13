@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S50Pow {
+public class LC50Pow {
 
     public static double myPow(double x, int n) {
         if (n == 0) {

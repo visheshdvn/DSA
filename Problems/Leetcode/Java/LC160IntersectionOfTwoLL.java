@@ -11,7 +11,7 @@ class ListNode {
 /**
  * S160IntersectionOfTwoLL
  */
-public class S160IntersectionOfTwoLL {
+public class LC160IntersectionOfTwoLL {
     static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null)
             return null;

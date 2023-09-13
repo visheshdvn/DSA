@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S1929ArrConcatenation {
+public class LC1929ArrConcatenation {
     public static int[] getConcatenation(int[] nums) {
         int a[] = new int[nums.length * 2];
         for (int i = 0; i < nums.length; i++) {

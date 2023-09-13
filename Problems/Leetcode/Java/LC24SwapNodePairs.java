@@ -10,7 +10,7 @@ class Node {
     }
 }
 
-public class S24SwapNodePairs {
+public class LC24SwapNodePairs {
     static Node swapPairs(Node head) {
         if (head.next == null)
             return head;
