@@ -1,25 +1,31 @@
 import java.util.Scanner;
 
-public class LC905SortArrByParity {
-    public static int[] sortArrayByParity(int[] nums) {
-        int n = 0, curr = 0;
+/**
+ * LC747LargestNoTwiceOfOthers
+ */
+public class LC747LargestNoTwiceOfOthers {
+    public static int dominantIndex(int[] nums) {
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+        int maxInd = -1;
 
-        while (n < nums.length) {
-            if ((nums[n] & 1) == 0) {
-                int e = nums[curr];
-                nums[curr] = nums[n];
-                nums[n] = e;
-
-                curr++;
+        for (int i = 0; i < nums.length; i++) {
+            if (first < nums[i]) {
+                second = first;
+                first = nums[i];
+                maxInd = i;
+            } else if (second < nums[i]) {
+                second = nums[i];
             }
-
-            n++;
         }
 
-        return nums;
+        if (first >= 2 * second) {
+            return maxInd;
+        } else {
+            return -1;
+        }
     }
 
-    // take element input
     public static void populateArr(int[] arr, int startIndex, int n) {
         // populates n numbers from startIndex
         Scanner scan = new Scanner(System.in);
@@ -45,7 +51,8 @@ public class LC905SortArrByParity {
         System.out.print("Enter elements of array: ");
         populateArr(arr, 0, n); // populates array from [startIndex, startIndex+length) position
 
-        int[] res = sortArrayByParity(arr);
-        printArr(res, 0, res.length);
+        int res = dominantIndex(arr);
+        System.out.println(res);
     }
+
 }
