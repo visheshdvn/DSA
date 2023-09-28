@@ -6,86 +6,66 @@ import java.util.Scanner;
  * LC66PlusOne
  */
 public class LC54SpiralMatrix {
-
     public static List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> nums = new ArrayList<Integer>();
+        int i = 0, j = 0;
+        List<Integer> list = new ArrayList<>();
 
-        // int h1 = 0, h2 = matrix.length;
-        // int v1 = 0, v2 = matrix[0].length;
-
-        int rowJump = matrix.length - 1;
-        int colJump = matrix[0].length - 1;
-
-        int row = 0, col = 0;
-
-        while (rowJump > 0 || colJump > 0) {
-            // int i = 0, j = 0;
-            // take coljump first
-            // while (i <= colJump) {
-            // System.out.print(matrix[j][i] + " ");
-            // i++;
-            // }
-            // i--;
-            // j++;
-
-            // take row jump
-            // while (j <= rowJump) {
-            // System.out.print(matrix[j][i] + " ");
-            // j++;
-            // }
-            // j--;
-            // i--;
-
-            // reverse direction
-            // colJump--;
-            // rowJump--;
-
-            // take col jump
-            for (int i = 0; i <= colJump; i++) {
-                System.out.print(matrix[row][col] + " ");
-                col++;
+        while (i < matrix.length && j < matrix[0].length) {
+            int move = 0;
+            while (j < matrix[i].length) {
+                if (matrix[i][j] == -101) {
+                    break;
+                }
+                list.add(matrix[i][j]);
+                matrix[i][j] = -101;
+                j++;
+                move++;
             }
-            col--;
-            row++;
+            j--;
+            i++;
 
-            // take row jump
-            for (int i = 0; i < rowJump; i++) {
-                System.out.print(matrix[row][col] + " ");
-                row++;
+            while (i < matrix.length) {
+                if (matrix[i][j] == -101) {
+                    break;
+                }
+                list.add(matrix[i][j]);
+                matrix[i][j] = -101;
+                i++;
+                move++;
             }
-            row--;
-            col--;
+            i--;
+            j--;
 
-            // reverse dir
-            colJump--;
-            rowJump--;
+            // reverse the order
 
-            // reverse col jump
-            for (int i = 0; i <= colJump; i++) {
-                System.out.print(matrix[row][col] + " ");
-                col--;
+            while (j >= 0) {
+                if (matrix[i][j] == -101) {
+                    break;
+                }
+                list.add(matrix[i][j]);
+                matrix[i][j] = -101;
+                j--;
             }
-            col++;
-            row--;
+            j++;
+            i--;
 
-            // reverse row jump
-            for (int i = 0; i < rowJump; i++) {
-                System.out.print(matrix[row][col] + " ");
-                row--;
+            while (i >= 0) {
+                if (matrix[i][j] == -101) {
+                    break;
+                }
+                list.add(matrix[i][j]);
+                matrix[i][j] = -101;
+                i--;
             }
-            row++;
-            col++;
+            i++;
+            j++;
 
-            colJump--;
-            rowJump--;
-            // break;
+            if (move == 0) {
+                break;
+            }
         }
 
-        if (rowJump == 0 && colJump == 0) {
-            System.out.println(matrix[row][col]);
-        }
-
-        return nums;
+        return list;
     }
 
     public static void populateArr(int[] arr, int startIndex, int n) {
