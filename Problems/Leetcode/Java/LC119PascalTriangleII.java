@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * LC118PascalsTriangle
+ * LC119PascalTriangleII
  */
-public class LC118PascalsTriangle {
+public class LC119PascalTriangleII {
     static int gcd(int a, int b) {
         if (b == 0)
             return a;
@@ -43,33 +42,23 @@ public class LC118PascalsTriangle {
         return num / den;
     }
 
-    public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> list = new ArrayList<>();
+    public static List<Integer> getRow(int rowIndex) {
+        List<Integer> list = new ArrayList<>();
+        int[] l = new int[rowIndex + 1];
 
-        for (int i = 0; i < numRows; i++) {
-            int[] arr = new int[i + 1];
-            for (int j = 0; j <= i / 2; j++) {
-                arr[j] = arr[i - j] = nCr(i, j);
-            }
-
-            List<Integer> l = new ArrayList<>();
-            for (int n : arr) {
-                l.add(n);
-            }
-            
-            list.add(l);
+        for (int i = 0; i <= rowIndex / 2; i++) {
+            l[i] = l[rowIndex - i] = nCr(rowIndex, i);
         }
 
+        for (int i : l) {
+            list.add(i);
+        }
         return list;
     }
 
-    public static void printListOfList(List<List<Integer>> l) {
+    public static void printList(List<Integer> l) {
         for (int i = 0; i < l.size(); i++) {
-            List<Integer> subList = l.get(i);
-            for (int j = 0; j < subList.size(); j++) {
-                System.out.print(subList.get(j) + " ");
-            }
-            System.out.println();
+            System.out.print(l.get(i) + " ");
         }
     }
 
@@ -78,9 +67,10 @@ public class LC118PascalsTriangle {
 
         System.out.print("Enter value of n: ");
         int n = scan.nextInt();
+        scan.close();
 
-        List<List<Integer>> l = generate(n);
-        printListOfList(l);
+        List<Integer> l = getRow(n);
 
+        printList(l);
     }
 }
