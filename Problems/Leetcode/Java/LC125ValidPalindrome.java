@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S125ValidPalindrome {
+public class LC125ValidPalindrome {
 
     public static boolean isPalindrome(String s) {
         int i = 0, j = s.length()-1;

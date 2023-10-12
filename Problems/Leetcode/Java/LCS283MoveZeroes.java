@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S283MoveZeroes {
+public class LCS283MoveZeroes {
     public static void moveZeroes(int[] nums) {
         int slow = 0, fast = 0;
 

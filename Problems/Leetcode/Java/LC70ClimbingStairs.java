@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S70ClimbingStairs {
+public class LC70ClimbingStairs {
     public static int climbStairs(int n) {
         if (n < 2) {
             return 1;

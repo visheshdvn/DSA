@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S242ValidAnagram {
+public class LC242ValidAnagram {
     public static boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
             return false;

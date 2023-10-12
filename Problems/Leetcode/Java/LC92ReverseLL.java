@@ -17,7 +17,7 @@ class ListNode {
 /**
  * S92ReverseLL
  */
-public class S92ReverseLL {
+public class LC92ReverseLL {
 
     public static ListNode reverseLL(ListNode head, int left, int right) {
         if (head == null || head.next == null) {

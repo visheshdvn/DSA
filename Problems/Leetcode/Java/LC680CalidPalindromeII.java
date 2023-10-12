@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class S680CalidPalindromeII {
+public class LC680CalidPalindromeII {
     static public boolean validPalindromeHelper(String s, int left, int right, boolean isDeleted) {
         while (left <= right) {
             if (s.charAt(left) != s.charAt(right)) {

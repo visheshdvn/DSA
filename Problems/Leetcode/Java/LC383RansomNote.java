@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class S383RansomNote {
+public class LC383RansomNote {
     public static boolean canConstruct(String ransomNote, String magazine) {
         HashMap<Character, Integer> h = new HashMap<>();
 

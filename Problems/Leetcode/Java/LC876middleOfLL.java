@@ -9,34 +9,19 @@ class Node {
     }
 }
 
-public class S86PartitionLL {
-    static Node partition(Node head, int x) {
-        if (head == null || head.next == null)
+public class LC876middleOfLL {
+    static Node middleNode(Node head) {
+        if (head.next == null)
             return head;
 
-        Node node = new Node(0);
-        node.next = head;
+        Node fast = head, slow = head;
 
-        Node back = node, front = node, temp;
-
-        while (front.next != null) {
-            if (front.next.data < x) {
-                temp = front.next;
-                front.next = front.next.next;
-
-                temp.next = back.next;
-                back.next = temp;
-                back = back.next;
-                if (back == front.next) {
-                    front = front.next;
-                }
-                continue;
-            }
-
-            front = front.next;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
         }
 
-        return node.next;
+        return slow;
 
     }
 
@@ -73,9 +58,6 @@ public class S86PartitionLL {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("Enter the value of x: ");
-        int x = scan.nextInt();
-
         System.out.print("Enter number of initial nodes: ");
         int n = scan.nextInt();
         int arr[] = new int[n];
@@ -87,7 +69,8 @@ public class S86PartitionLL {
 
         scan.close();
         Node head = createLinkList(arr);
-        Node n_head = partition(head, x);
-        printLL(n_head);
+        // printLL(head);
+        Node n_head = middleNode(head);
+        System.out.print(n_head.data);
     }
 }

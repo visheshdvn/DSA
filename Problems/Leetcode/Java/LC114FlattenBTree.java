@@ -12,7 +12,7 @@ class Node {
     }
 }
 
-public class S114FlattenBTree {
+public class LC114FlattenBTree {
     static Queue<Node> q = new ArrayDeque<>();
 
     static void flatten(Node root) {

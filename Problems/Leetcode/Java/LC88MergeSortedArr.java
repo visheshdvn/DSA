@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * S88MergeSortedArr
  */
-public class S88MergeSortedArr {
+public class LC88MergeSortedArr {
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
         int index = nums1.length - 1,
                 a = m - 1,
