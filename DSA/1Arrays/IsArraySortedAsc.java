@@ -7,6 +7,9 @@ public class IsArraySortedAsc {
 
         for (int i = 0; i < n - 1; i++) {
             sorted = sorted && (arr[i] < arr[i + 1]);
+            if(sorted == false) {
+                return false;
+            }
         }
         return sorted;
     }

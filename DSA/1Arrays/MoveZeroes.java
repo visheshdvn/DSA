@@ -1,35 +1,23 @@
 import java.util.Scanner;
 
 public class MoveZeroes {
-
+    // move all zeroes to right
+    
     public static void moveZeroes(int[] nums) {
-        if (nums.length == 1) {
-            return;
-        }
+        int slow = 0, fast = 0;
 
-        int i = 0, j = 0;
-
-        while (j < nums.length) {
-            if (i == j && nums[i] != 0) {
-                i += 1;
-                j += 1;
-            } else if (i == j && nums[i] == 0) {
-                j += 1;
-            } else if (i != j && nums[i] == 0 && nums[j] != 0) {
-                nums[i] = nums[j];
-                nums[j] = 0;
-                i += 1;
-                j += 1;
-            } else if (i != j && nums[i] == 0 && nums[j] == 0) {
-                j += 1;
-            } else if (i != j && nums[i] != 0 && nums[j] == 0) {
-                i += 1;
-                j += 1;
-            } else if (i != j && nums[i] != 0 && nums[j] != 0) {
-                i += 1;
+        while (fast < nums.length) {
+            if (nums[fast] != 0) {
+                nums[slow] = nums[fast];
+                slow++;
             }
+            fast++;
         }
 
+        while (slow < nums.length) {
+            nums[slow] = 0;
+            slow++;
+        }
     }
 
     public static void printArray(int[] arr) {
@@ -41,7 +29,7 @@ public class MoveZeroes {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Enter Size of array");
+        System.out.print("Enter Size of array: ");
         int n = scan.nextInt();
         int arr[] = new int[n];
 
