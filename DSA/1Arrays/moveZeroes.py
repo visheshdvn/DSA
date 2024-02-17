@@ -6,6 +6,7 @@ def move_zeroes(nums):
         if nums[n] != 0:
             nums[curr] = nums[n]
             curr += 1
+            
         n += 1
 
     while curr < len(nums):
